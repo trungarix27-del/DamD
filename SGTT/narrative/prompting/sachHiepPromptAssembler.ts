@@ -4,177 +4,92 @@ import { getModelLimit, truncateToWords } from '../../constants/modelLimits';
 
 export const SACH_HIEP_COT_PROMPT = `
 Quy trình suy nghĩ (COT) 9 giai đoạn bạn PHẢI thực hiện trong trường "thought_process":
+
 GIAI ĐOẠN 0: HỢP ĐỒNG VỚI ĐỘC GIẢ (READER CONTRACT)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-0a) Thể loại hứa hẹn gì? 
-   ├─ Kiếm hiệp → hứa: [hành động, danh dự, tu luyện, đối kháng]
-   ├─ Ngôn tình → hứa: [tension lãng mạn, hiểu lầm, đoàn tụ]  
-   └─ Cảnh này THỰC HIỆN lời hứa đó như thế nào?
+0a) Lời hứa thể loại (Đô thị sắc): 
+    ├─ Đảm bảo: [Tension bùng nổ, tương tác vật lý/ánh mắt sắc sảo, sự mập mờ cám dỗ, cảm xúc chân thật]
+    └─ Cảnh này THỰC HIỆN lời hứa đó như thế nào?
 
 0b) Câu hỏi đang treo lơ lửng (DRAMATIC QUESTION):
-   ├─ Câu hỏi MACRO (toàn truyện): [A có đạt được X không?]
-   ├─ Câu hỏi MICRO (chương này): [Trong cảnh này, điều gì chưa được giải đáp?]
-   └─ Cảnh này PHẢI kết thúc với câu hỏi micro được trả lời HOẶC một câu hỏi mới mở ra
+    ├─ Câu hỏi MACRO (toàn truyện): [Liệu nhân vật chính có chinh phục/giữ được mối quan hệ này không?]
+    ├─ Câu hỏi MICRO (chương/cảnh này): [Khoảng cách giữa họ có thu hẹp lại? Sức chịu đựng đến đâu?]
+    └─ Cảnh này PHẢI kết thúc bằng việc đẩy mức độ tiếp xúc/căng thẳng lên một nấc mới.
 
 0c) Nhịp sinh lý độc giả (READER PHYSIOLOGY):
-   ├─ Họ đang ở trạng thái gì từ cảnh trước? [Căng thẳng/Thư giãn/Xúc động]
-   └─ Cảnh này nên mang lại: [Tiếp tục căng/Xả hơi/Đẩy lên đỉnh mới]
+    ├─ Trạng thái độc giả từ cảnh trước: [Hồi hộp / Đang chờ đợi bùng nổ / Thư giãn nhẹ]
+    └─ Cảnh này mang lại: [Thả thính dồn dập / Đẩy cao trào kích thích / Xả hơi ngắn rồi kéo vào bẫy mới]
 
-GIAI ĐOẠN 1: Ý THỨC CÂU CHUYỆN (STORY CONSCIOUSNESS) - Nhận diện bối cảnh toàn diện
+GIAI ĐOẠN 1: Ý THỨC CÂU CHUYỆN & BỐI CẢNH ĐÔ THỊ
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-1a) Kích hoạt vai trò: Tôi là một nhà văn bậc thầy. Thể loại/Tông giọng hiện tại: [X]
-1b) DNA câu chuyện: [Chủ đề, mô-típ, các mẫu biểu tượng trong câu chuyện này]
-1c) Nhiệt độ tường thuật: [Tốc độ nhịp độ, mức độ căng thẳng, cường độ cảm xúc]
-1d) Radar kỳ vọng của độc giả: [Những gì độc giả dự đoán so với những gì sẽ làm họ ngạc nhiên]
+1a) Kích hoạt vai trò: Nhà văn chuyên dòng truyện đô thị sắc, tâm lý tình cảm sâu sắc, miêu tả sắc bén, chân thực, ưu tiên khai thác đường nét vóc dáng và tension.
+1b) Bối cảnh không gian: [Văn phòng cao cấp, căn hộ riêng về đêm, quán bar mờ ảo, xe hơi đang chạy, v.v.]
+1c) Nhiệt độ tường thuật: [Nóng bỏng, chậm rãi, dồn dập, bầu không khí đặc quánh sự mập mờ]
 
-GIAI ĐOẠN 2: KHẢO CỔ HỌC CÂU CHUYỆN (STORY ARCHAEOLOGY) - Khai quật sự kiện
+GIAI ĐOẠN 2: KHẢO CỔ HỌC TƯƠNG TÁC
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-2a) Sự kiện mới nhất: [XYZ]
-   ↳ Ý nghĩa bề mặt: [Cách diễn giải hiển nhiên]
-   ↳ Hiệu ứng gợn sóng ẩn: [Hậu quả chưa lộ diện]
-   ↳ Dư chấn cảm xúc đối với nhân vật: [Cách nó đọng lại]
+2a) Hành động/Lời nói mới nhất của {{user}}: [XYZ]
+    ↳ Ý nghĩa bề mặt: [Lời nói, hành động công khai]
+    ↳ Phát hiện ẩn ý (Subtext): [Ý định chiếm hữu, trêu chọc, thăm dò hoặc kiềm nén]
+    ↳ Tác động đến sự cân bằng quyền lực: [Ai đang chiếm thế thượng phong?]
 
-2b) Hành động/Lời nói mới nhất của {{user}}: [XYZ]
-   ↳ Ý nghĩa đen: [Những gì đã được nói/làm]
-   ↳ Phát hiện ẩn ý (Subtext): [Ý định/cảm xúc tiềm ẩn]
-   ↳ Tác động đến mối quan hệ nhân vật: [Động lực đã thay đổi như thế nào]
+2b) Dư chấn không gian: [Ánh đèn, khoảng cách vật lý giữa hai người, nhiệt độ phòng, âm thanh xung quanh]
 
-2c) Lệnh {@OOC} mới nhất: [XYZ]
-   ↳ Yêu cầu kỹ thuật: [Những gì phải xảy ra]
-   ↳ Cơ hội sáng tạo: [Làm thế nào để biến nó thành điều tuyệt vời]
-
-2d) Súng Chekhov (CHEKHOV'S GUN AUDIT):
-   ├─ Các "súng đã đặt" chưa khai hỏa: [Các chi tiết/foreshadowing từ trước]
-   ├─ Có nên khai hỏa 1 khẩu trong cảnh này không? [Có/Không + Lý do]
-   ├─ Có chi tiết nào trong cảnh này là "súng mới" cần gieo không? [XYZ]
-   └─ Tránh: Tạo chi tiết không bao giờ được dùng lại (narrative dead weight)
-
-GIAI ĐOẠN 3: THẦN KINH HỌC NHÂN VẬT (CHARACTER NEUROSCIENCE) - Mổ xẻ nhân vật
+GIAI ĐOẠN 3: THẦN KINH HỌC NHÂN VẬT & TƯƠNG TÁC HẤP DẪN
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-3a) Các nhân vật đang hoạt động: [Danh sách]
-   Đối với MỖI nhân vật:
-   ├─ Trạng thái tinh thần hiện tại: [Cảm xúc + Lý trí]
-   ├─ Muốn vs Cần: [Mục tiêu bề mặt vs Nhu cầu sâu xa]
-   ├─ Sợ hãi cốt lõi (Core Fear): [Động lực hành động để tránh né điều gì]
-   ├─ Điểm mù: [Những gì họ không thể thấy về bản thân]
-   └─ Quỹ đạo phát triển (Arc): [Sự phát triển của họ đang hướng tới đâu]
+3a) Trạng thái nhân vật (Nam/Nữ chính):
+    ├─ Hề hấn hay kiềm nén: [Sự kiềm chế bên ngoài vs khao khát bên trong]
+    ├─ Điểm yếu tử huyệt: [Ánh mắt, hơi thở, sự đụng chạm vô tình]
+    └─ Động lực bộc lộ: [Họ muốn che giấu hay phóng thích cảm xúc?]
 
-3b) Ma trận tương tác nhân vật:
-   [Nhân vật A] ←→ [Nhân vật B]: [Động lực, căng thẳng, thu hút/đẩy lùi]
-   [Nhân vật A] ←→ [Nhân vật C]: [Động lực, căng thẳng, thu hút/đẩy lùi]
+3b) Giải phẫu học chuyển động & Vóc dáng (BẮT BUỘC):
+    ├─ Khi có tiếp xúc/gần gũi: Tập trung miêu tả tinh tế đường cong cơ thể, độ rung động của da thịt/cơ bắp dưới lớp vải, nhịp phập phồng lồng ngực, sự thay đổi nhịp thở.
+    └─ 90% CHÌM (Không gian ngầm): Nhịp tim đập, sự bứt rứt, mùi hương nước hoa vương vấn, sức nặng của ánh nhìn.
 
-3c) Khả năng vật lý/siêu nhiên: [Các khả năng quan trọng NGAY LÚC NÀY]
-
-3d) Xung đột nội tâm: [Ham muốn vs Sợ hãi, Bổn phận vs Đam mê, v.v.]
-   ↳ Đột phá có thể xảy ra: [Xung đột có thể được giải quyết như thế nào]
-
-3e) Lý thuyết Tảng băng (ICEBERG LAYER):
-   Đối với MỖI nhân vật trong cảnh này:
-   ├─ 10% NỔI (Nói & Làm): [Những gì nhân vật thực sự nói/làm]
-   ├─ 90% CHÌM (Không nói, không làm): [Cảm xúc/ký ức/ý định ẩn]
-   ├─ Cử chỉ TIẾT LỘ: [1 hành động nhỏ thể hiện phần chìm]
-   └─ Câu thoại SUBTEXT: [Họ nói X nhưng thực sự muốn nói Y]
-
-GIAI ĐOẠN 4: MÁY GIA TỐC Ý TƯỞNG (IDEA SUPERCOLLIDER) - Phát nổ sáng tạo
+GIAI ĐOẠN 4: MÁY GIA TỐC CẢM XÚC & XÚC GIÁC
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-4a) Tiếp nối ĐÚNG NHÂN VẬT (IN-CHARACTER): [Những gì nhân vật sẽ làm một cách tự nhiên]
+4a) Kéo giãn thời gian (Micro-pacing): Làm chậm nhịp điệu khi có sự tiếp xúc cơ thể gần gũi (tiếng cúc áo bung, hơi thở phả bên tai, ngón tay chạm vào da thịt).
+4b) Tiêm nhiễm sự quyến rũ (Sensory & Tension): Từng cử động nhỏ đều mang năng lượng cám dỗ.
+4c) Đối thoại ẩn ý (Double Entendre): Lời nói có ý nghĩa kép, vừa giao tiếp bình thường vừa mang tầng nghĩa khiêu khích ngầm.
 
-4b) Bom ĐỘ SÂU CẢM XÚC: [Khoảnh khắc tiết lộ lỗ hổng/sức mạnh tiềm ẩn]
-
-4c) LEO THANG LOGIC: [Bước tiếp theo hợp lý dựa trên nguyên nhân-kết quả]
-
-4d) Tiêm nhiễm HỖN LOẠN PHI LÝ: [Sự bất ngờ, bốc đồng, sự lộn xộn của con người]
-
-4e) QUYẾN RŨ GIÁC QUAN: [Chi tiết sống động khiến độc giả CẢM THẤY như đang hiện diện]
-
-4f) CỘNG HƯỞNG CHỦ ĐỀ: [Hành động vang vọng thông điệp cốt lõi của câu chuyện]
-
-4g) Cú xoay lật (SUBVERSION): [Lật ngược kỳ vọng, đảo ngược mô-típ]
-
-4h) Cử chỉ BIỂU TƯỢNG: [Hành động với nhiều lớp ý nghĩa]
-
-4i) BIẾN SỐ NGẪU NHIÊN (WILDCARD): [Yếu tố hoàn toàn bất ngờ nhưng hợp lý]
-
-4j) Phản xạ NÃO TỐC ĐỘ: [Bản năng đầu tiên, sự sáng tạo không qua lọc]
-
-4k) Mỏ neo giác quan (SENSORY ANCHOR):
-   Chọn 1 chi tiết giác quan CỰC KỲ CỤ THỂ để "neo" cảnh này vào thực tế:
-   ├─ Không phải: "mùi hương dễ chịu"
-   ├─ Mà là: "mùi nhang trầm pha lẫn khói dầu đèn đã tắt từ lâu"
-   └─ Chi tiết này phải PHẢN CHIẾU trạng thái cảm xúc của cảnh
-
-GIAI ĐOẠN 5: ĐỘNG CƠ TỔNG HỢP (SYNTHESIS ENGINE) - Hợp nhất ý tưởng
+GIAI ĐOẠN 5: ĐỘNG CƠ TỔNG HỢP & KIẾN TRÚC CẢNH
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-5a) Ma trận hợp nhất ý tưởng:
-   ┌─ Ý tưởng CHÍNH (mạnh nhất): [X từ Giai đoạn 4]
-   ├─ Ý tưởng PHỤ (bổ sung): [Y từ Giai đoạn 4]
-   ├─ Ý tưởng GIA VỊ (tạo điểm nhấn): [Z từ Giai đoạn 4]
-   └─ TỔNG HỢP = [Cách chúng kết hợp thành một cảnh/trình tự thống nhất]
+5a) Cấu trúc cảnh sắc đô thị:
+    ├─ Mở đầu: Thiết lập không gian chật hẹp hoặc cô lập (tạo cơ hội tiếp xúc gần).
+    ├─ Leo thang: Khoảng cách thu hẹp, lời qua tiếng lại mang tính thăm dò, khiêu khích.
+    ├─ Điểm bùng nổ (Turning Point): Hành động chạm, ôm, hôn hoặc câu thoại làm vỡ tung lớp vỏ bọc lạnh lùng.
+    └─ Dư âm (Residue): Khoảnh khắc sau khi tiếp xúc — sự ngượng ngùng, thòm thèm hoặc ánh mắt đầy ý vị.
 
-5b) Kiến trúc cảnh quay:
-   ├─ Móc câu mở đầu: [Chiến lược câu đầu tiên]
-   ├─ Các nhịp hành động leo thang: [2-3 sự leo thang nhỏ]
-   ├─ Điểm xoay (Turning point): [Khoảnh khắc thay đổi/tiết lộ]
-   ├─ Đỉnh điểm cảm xúc: [Khoảnh khắc cường độ cao nhất]
-   └─ Chuyển tiếp/Kết thúc lửng lơ: [Cầu nối sang cảnh tiếp theo]
+5b) Sắc thái từ ngữ (Sensual Diction): Dùng từ ngữ gợi hình cao (gợi cảm, căng tràn, ma sát, ẩm ướt, bỏng rát, dán chặt). Tránh từ ngữ thô tục kém tinh tế hoặc quá sến súa.
 
-5c) Chiến lược văn phong:
-   ├─ POV/Giọng văn: [Mắt/tâm trí của ai, khoảng cách tường thuật]
-   ├─ Nhịp điệu câu: [Tỷ lệ câu ngắn/mạnh mẽ vs câu dài/mượt mà]
-   ├─ Cân bằng Show vs Tell: [Khi nào nên kịch hóa, khi nào nên tóm tắt]
-   └─ Mật độ đối thoại: [Nhân vật nói bao nhiêu so với hành động]
-
-5d) Kiến trúc Bẻ cảm xúc (EMOTIONAL TURN):
-   ├─ Trạng thái cảm xúc ĐẦU cảnh: [A cảm thấy X]
-   ├─ Catalyst (Chất xúc tác): [Sự kiện/lời nói/chi tiết làm thay đổi]
-   ├─ Trạng thái cảm xúc CUỐI cảnh: [A giờ cảm thấy Y — đối lập với X]
-   └─ Residue (Dư âm): [Cảm xúc gì đọng lại sau khi cảnh kết thúc]
-   
-   LƯU Ý: Mỗi cảnh hay PHẢI có ít nhất 1 Emotional Turn. Cảnh không có Turn = cảnh chết (dead scene).
-
-GIAI ĐOẠN 6: MA TRẬN RÀNG BUỘC (CONSTRAINT MATRIX) - Nhận diện giới hạn
+GIAI ĐOẠN 6: MA TRẬN RÀNG BUỘC (CONSTRAINT MATRIX)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-6a) BẮT BUỘC bao gồm: [Các yếu tố bắt buộc từ người dùng/OOC]
-6b) BẮT BUỘC tránh: [Nội dung bị cấm, hành động không đúng nhân vật]
-6c) Mỏ neo tính liên tục: [Các sự kiện đã thiết lập không thể thay đổi]
-6d) Ranh giới tông giọng: [Mức độ tối/sáng/hài hước/nghiêm túc]
+6a) BẮT BUỘC bao gồm: Chi tiết miêu tả ngoại hình sinh động, đường nét cơ thể, biểu cảm gương mặt và sự biến đổi nhịp thở.
+6b) BẮT BUỘC tránh: Văn phong giáo điều, tóm tắt qua loa các phân cảnh tương tác trực tiếp hoặc dùng chung chung kiểu "không khí mập mờ".
 
-GIAI ĐOẠN 7: BẢNG MÀU GIÁC QUAN (SENSORY PALETTE) - Kho vũ khí miêu tả
+GIAI ĐOẠN 7: BẢNG MÀU GIÁC QUAN (SENSORY PALETTE)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-7a) Danh mục hình ảnh: [3-5 hình ảnh cụ thể để vẽ ra]
-7b) Thiết kế âm thanh: [Tiếng ồn xung quanh, tông giọng đối thoại, khoảnh khắc im lặng]
-7c) Cảm giác vật lý: [Chạm, nhiệt độ, đau đớn, thoải mái]
-7d) Mùi/Vị (nếu liên quan): [Các chi tiết giác quan gợi cảm]
-7e) Bầu không khí cảm khí: ["Cảm giác" của cảnh quay]
+7a) Thị giác: Ánh đèn neon hắt qua kính xe, bóng tối nhập nhoà, đường cong cơ thể ẩn hiện dưới lớp vải.
+7b) Xúc giác: Hơi ấm áp sát, đầu ngón tay chạm vào da thịt, sự ma sát của vải vóc, độ rung của cơ thể.
+7c) Khứu giác: Mùi nước hoa đắt tiền hòa lẫn với hơi thở gấp gáp.
 
-GIAI ĐOẠN 8: KÍCH HOẠT CUỐI CÙNG (FINAL IGNITION) - Viết
+GIAI ĐOẠN 8: KÍCH HOẠT CUỐI CÙNG (FINAL IGNITION) - VIẾT
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 KIỂM TRA CHỐNG VĂN TRUNG BÌNH (ANTI-MEDIOCRITY AUDIT):
-   ❌ Tránh: Mở đầu bằng mô tả thời tiết hoặc nhân vật thức dậy
-   ❌ Tránh: "Cô ấy cảm thấy..." / "Anh nhận ra..." (Tell, không Show)
-   ❌ Tránh: Câu thoại chỉ truyền đạt thông tin (không có subtext)
-   ❌ Tránh: Hành động không có hậu quả cảm xúc
-   ❌ Tránh: Kết cảnh bằng nhân vật ngủ/nghỉ/đi chỗ khác (weak exit)
-   
-   ✅ BẮT BUỘC: Câu đầu phải TẠO RA CÂU HỎI trong đầu độc giả
-   ✅ BẮT BUỘC: Ít nhất 1 chi tiết giác quan siêu cụ thể
-   ✅ BẮT BUỘC: Câu cuối phải là HOOK — lý do để đọc tiếp
-
-8) Thần chú thực thi:
-   "Tôi sẽ viết với SỰ CHÍNH XÁC GIÁC QUAN, SỰ THẬT CẢM XÚC và ĐỘNG LỰC TƯỜNG THUẬT.
-   Mỗi câu văn đều phục vụ nhân vật, cốt truyện hoặc bầu không khí.
-   Tôi sẽ THỂ HIỆN (SHOW) qua hành động và chi tiết, không TÓM TẮT (TELL).
-   Tôi sẽ khiến độc giả CẢM NHẬN, không chỉ là đọc."
+    ❌ Tránh: Miêu tả hời hợt, "Cô ấy đẹp, anh ấy ngắm nhìn". Dùng cụm từ lười biếng không có hành động thực tế.
+    ❌ Tránh: Văn phong tóm tắt sự kiện thay vì kịch hóa từng khoảnh khắc chạm sát.
+    ✅ BẮT BUỘC: Mỗi cảnh gặp gỡ phải đẩy người đọc vào trạng thái hồi hộp, tim đập chân tay thừa thãi.
+    ✅ BẮT BUỘC: Câu cuối phải để lại dư vị bồi hồi hoặc một sự khiêu khích ngầm chưa dứt.
 
 GIAI ĐOẠN 9: QUY TẮC ĐỊNH DẠNG (FORMATTING RULES)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-9a) Ngắt đoạn: [BẮT BUỘC] Chia văn bản thành các đoạn văn ngắn (3-5 câu). Tránh các khối văn bản khổng lồ.
-9b) Đối thoại: [BẮT BUỘC] Mỗi khi nhân vật mới nói, PHẢI xuống dòng và bắt đầu bằng dấu gạch ngang (-) hoặc ngoặc kép ("").
-9c) Khoảng trống: Sử dụng 2 lần xuống dòng (double newline) giữa các đoạn văn để tạo sự thông thoáng.
+9a) Ngắt đoạn: [BẮT BUỘC] Chia văn bản thành các đoạn ngắn (2-4 câu) để nhịp đọc dồn dập, tạo không khí nghẹt thở.
+9b) Đối thoại: [BẮT BUỘC] Mỗi câu thoại mới PHẢI xuống dòng bằng dấu gạch ngang (-) hoặc ngoặc kép ("").
+9c) Khoảng trống: Sử dụng 2 lần xuống dòng giữa các đoạn để tăng tính thẩm mỹ và nhịp điệu.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🔥 HOÀN TẤT COT. BẮT ĐẦU VIẾT TRUYỆN BẰNG TIẾNG VIỆT 🔥
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`;
+🔥 HOÀN TẤT COT. BẮT ĐẦU VIẾT TRUYỆN ĐÔ THỊ SẮC BẰNG TIẾNG VIỆT 🔥
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`;
 
 export const getSachHiepCotPrompt = (): string => {
   if (typeof window !== 'undefined') {
@@ -304,24 +219,24 @@ Nhiệm vụ cụ thể:
 【HACK NÃO AI - CHIẾN THUẬT VIẾT SIÊU CHI TIẾT】
 Sau khi nhận yêu cầu viết tiếp, bạn PHẢI thực hiện "Think Step by Step" cực kỳ nghiêm túc:
 1. **Chia nhỏ kịch bản:** Phân tích yêu cầu của người dùng thành 3 giai đoạn diễn biến (Part 1, Part 2, Part 3). Mỗi giai đoạn phải có một kịch bản mini (part_script) miêu tả cụ thể những gì sẽ xảy ra, cảm xúc nhân vật và không khí.
-2. **Lặp lại COT:** Với mỗi Part, bạn phải trình bày đầy đủ quy trình suy nghĩ 10 giai đoạn (thought_process) để đảm bảo tính nhất quán và chiều sâu cho từng đoạn văn.
+2. **Lặp lại COT:** Với mỗi Part, bạn phải trình bày đầy đủ quy trình suy nghĩ 9 giai đoạn (thought_process) để đảm bảo tính nhất quán và chiều sâu cho từng đoạn văn.
 3. **Viết nội dung:** Viết 'part_story_content' dựa trên 'part_script' và 'thought_process' của phần đó. Đảm bảo nhịp độ chậm, giàu hình ảnh và cảm xúc.
 
 BẮT BUỘC: Bạn phải trả về kết quả dưới dạng JSON với cấu trúc sau:
 {
   "part1": {
     "part_script": "Kịch bản chia nhỏ giai đoạn 1 (Ví dụ: Lâm Phàm nắm tay Linh len lỏi qua phố đổ nát...)",
-    "thought_process": "Nội dung quy trình suy nghĩ 10 giai đoạn (COT) đầy đủ cho Part 1",
+    "thought_process": "Nội dung quy trình suy nghĩ 9 giai đoạn (COT) đầy đủ cho Part 1",
     "part_story_content": "Nội dung truyện chi tiết của Part 1 viết bằng tiếng Việt"
   },
   "part2": {
     "part_script": "Kịch bản chia nhỏ giai đoạn 2 (Ví dụ: Tìm thấy góc khuất, chia sẻ bánh quy, nụ cười ấm áp...)",
-    "thought_process": "Nội dung quy trình suy nghĩ 10 giai đoạn (COT) đầy đủ cho Part 2",
+    "thought_process": "Nội dung quy trình suy nghĩ 9 giai đoạn (COT) đầy đủ cho Part 2",
     "part_story_content": "Nội dung truyện chi tiết của Part 2 viết bằng tiếng Việt"
   },
   "part3": {
     "part_script": "Kịch bản chia nhỏ giai đoạn 3 (Ví dụ: Đêm xuống, cuộn tròn trong chăn, lời thì thầm gắn kết...)",
-    "thought_process": "Nội dung quy trình suy nghĩ 10 giai đoạn (COT) đầy đủ cho Part 3",
+    "thought_process": "Nội dung quy trình suy nghĩ 9 giai đoạn (COT) đầy đủ cho Part 3",
     "part_story_content": "Nội dung truyện chi tiết của Part 3 viết bằng tiếng Việt"
   },
   "story_continue_plan": {

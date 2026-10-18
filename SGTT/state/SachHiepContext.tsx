@@ -778,7 +778,7 @@ export const SachHiepProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         currentStory.pov,
         currentStory.pronounStyle,
         currentStory.negativePrompt,
-        currentStory.nsfw || false,
+        currentStory.nsfw ?? true,
         finalInstruction,
         currentChapter.title
       );
@@ -890,7 +890,7 @@ export const SachHiepProvider: React.FC<{ children: React.ReactNode }> = ({ chil
                 pov: currentStory.pov,
                 pronounStyle: currentStory.pronounStyle,
                 negativePrompt: currentStory.negativePrompt,
-                nsfw: currentStory.nsfw || false,
+                nsfw: currentStory.nsfw ?? true,
                 sourceUrl: currentStory.sourceUrl,
                 entityRegistry: currentStory.entityRegistry // Pass registry
             }
@@ -1236,7 +1236,7 @@ export const SachHiepProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         currentStory.pronounStyle, 
         currentStory.writingStyle || "", 
         currentStory.negativePrompt, 
-        currentStory.nsfw || false,
+        currentStory.nsfw ?? true,
         currentStory.sourceUrl,
         currentStory.entityRegistry
     );

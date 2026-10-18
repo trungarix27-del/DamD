@@ -69,12 +69,6 @@ export const SachHiepEditor: React.FC = () => {
     );
   }
 
-  const toggleNsfw = () => {
-    if (story) {
-        updateStorySettings({ nsfw: !story.nsfw });
-    }
-  };
-
   const handleFixChapter = async (instruction: string) => {
       if (!activeChapter || !activeChapter.content) return;
       await generateRewrite(instruction);
@@ -128,32 +122,15 @@ export const SachHiepEditor: React.FC = () => {
   return (
     <div className="flex-1 overflow-y-auto relative bg-gray-950 scroll-smooth">
       
-      {/* --- FLOATING TOOLBAR --- */}
-      <div className="sticky top-4 right-4 z-40 flex justify-end px-4 md:px-8 pointer-events-none">
-          <div className="pointer-events-auto flex items-center gap-1.5 bg-gray-900/90 backdrop-blur border border-gray-700 rounded-lg p-1.5 shadow-xl transition-all relative">
+      {/* --- FIXED TOOLBAR (Luôn hiển thị cố định ở góc trên bên phải như nút MENU) --- */}
+      <div className="fixed top-4 right-4 z-30 pointer-events-none">
+          <div className="pointer-events-auto flex items-center gap-1.5 bg-gray-900/90 backdrop-blur border border-gray-700 rounded-lg p-1.5 shadow-xl transition-all">
               
-              {/* Mode Toggle */}
-              <button 
-                  type="button"
-                  onClick={() => setIsEditMode(!isEditMode)}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded transition-all border cursor-pointer ${
-                      isEditMode 
-                      ? 'bg-primary-900/20 text-primary-400 border-primary-900/50 shadow-inner' 
-                      : 'text-gray-400 hover:text-gray-50 hover:bg-gray-800 border-transparent'
-                  }`}
-              >
-                  {isEditMode ? (
-                      <span>Sửa thủ công</span>
-                  ) : (
-                      <span>Chế độ Đọc</span>
-                  )}
-              </button>
-
               {/* TTS Listen Button */}
               <button
                   type="button"
                   onClick={() => setShowTtsPlayer(!showTtsPlayer)}
-                  title="Nghe đọc chương chuyện bằng giọng nói Google"
+                  title="Nghe đọc chương truyện bằng giọng nói"
                   className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded transition-all border cursor-pointer ${
                       showTtsPlayer
                           ? 'bg-primary-900/40 text-primary-300 border-primary-500/60 shadow-inner'
@@ -181,11 +158,9 @@ export const SachHiepEditor: React.FC = () => {
                   <span>✨ Sửa AI</span>
               </button>
 
-              <div className="w-px h-4 bg-gray-700 mx-0.5"></div>
-
               {/* Sync Indicator */}
               {isSyncingBible && (
-                  <div className="flex items-center gap-2 px-2.5 py-1.5 bg-emerald-900/30 text-emerald-400 border border-emerald-500/30 rounded text-xs font-bold animate-pulse" title="Đang đồng bộ Story Bible ngầm">
+                  <div className="flex items-center gap-1.5 px-2 py-1 bg-emerald-900/30 text-emerald-400 border border-emerald-500/30 rounded text-xs font-bold animate-pulse ml-0.5" title="Đang đồng bộ Story Bible ngầm">
                       <svg className="animate-spin h-3 w-3 text-emerald-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
@@ -193,20 +168,6 @@ export const SachHiepEditor: React.FC = () => {
                       <span className="hidden sm:inline">Đang đồng bộ</span>
                   </div>
               )}
-
-              {/* NSFW Toggle shortcut */}
-              <button 
-                  type="button"
-                  onClick={toggleNsfw}
-                  className={`flex items-center gap-1.5 px-2.5 py-1.5 text-[10px] font-black rounded transition-all border cursor-pointer ${
-                      story?.nsfw 
-                      ? 'bg-pink-900/40 text-pink-400 border-pink-500/50 shadow-[0_0_10px_rgba(236,72,153,0.2)]' 
-                      : 'bg-gray-800/50 text-gray-600 border-transparent hover:text-gray-400'
-                  }`}
-                  title={story?.nsfw ? "Dâm Tu Thần Bút đang KÍCH HOẠT" : "Kích hoạt Dâm Tu Thần Bút"}
-              >
-                  69+
-              </button>
           </div>
       </div>
 

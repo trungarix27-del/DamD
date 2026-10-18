@@ -99,15 +99,9 @@ export const SachHiepSidebar: React.FC<Props> = ({ onOpenSettings, isOpen, onClo
       {/* Header */}
       <div className="p-4 border-b border-gray-800 flex items-center justify-between shrink-0">
          <div className="flex flex-col overflow-hidden mr-2">
-            <div className="flex items-center gap-2">
-                <h1 className="text-xl font-bold bg-gradient-to-r from-primary-400 to-purple-400 bg-clip-text text-transparent truncate">
-                Dâm Tu Thần Bút
-                </h1>
-            </div>
-            <div className="text-[9px] text-gray-500 font-bold uppercase tracking-wider mb-1">
-                Remix by: Thích Tâm Phuk
-            </div>
-            <p className="text-xs text-gray-300 mt-1 truncate max-w-[150px] font-medium border-t border-gray-800/50 pt-1" title={story.title}>{story.title}</p>
+            <h1 className="text-base font-bold text-gray-100 truncate" title={story.title}>
+               {story.title}
+            </h1>
          </div>
          
          <div className="flex gap-1 shrink-0">
